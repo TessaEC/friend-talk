@@ -1,0 +1,25 @@
+{
+  "name": "friend-talk",
+  "version": "1.0.0",
+  "description": "An undeployed API using a MongoDB database and Express.js and Mongoose packages with a javascript date library. The app gives a platform for friends to post their thoughts and reactions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "npm run seed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.2.0",
+    "mongoose": "^7.0.3",
+    "nosql": "^6.1.0",
+    "sequelize": "^6.31.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
