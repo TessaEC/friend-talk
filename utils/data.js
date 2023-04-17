@@ -6,9 +6,7 @@ const usernames = [
     'tessa123',
     'shirleytemple',
     'janeandjohn',
-    'motormouth',
     'funinthesun',
-    'jlo4life',
     'watermeloncrush',
     'icecreamandcake',
 ];
@@ -25,7 +23,6 @@ const reactions = [
    'Peachy Keen, Jelly Bean!',
    'There\'s no crying in baseball!',
    'That\'s actually hilarious.',
-   'Hate, hate, hate. Double hate. Loathe entirely!',
    'You\'re killin\' me, Smalls!',
    'As if!',
 ];
