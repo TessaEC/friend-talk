@@ -1,6 +1,10 @@
-const connection = require('./config/connection');
-const { User, Thought } = require('./models');
-const { userSeedData, thoughtSeedData } = require('./data');
+const connection = require('../config/connection');
+const { User, Thought } = require('../models');
+const {
+    randomUsername,
+    randomThought,
+    randomReaction,
+    } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -10,17 +14,35 @@ connection.once( 'open', async () => {
     await User.deleteMany({});
     await Thought.deleteMany({});
 
-    const users = await User.create(userSeedData);
-    const thoughts = await Thought.create(thoughtSeedData);
+    const userAmount = 10;
+    const thoughtAmount = 1;
+    const users = [];
+    const thoughts = [];
 
-    const thoughtsByUser = thoughts.map((thought) => {
-      const user = users[Math.floor(Math.random() * users.length)];
-      thought.username = user.username;
-      thought.userId = user._id;
-      return thought;
-    });
-    
-    await Thought.insertMany(thoughtsByUser);
-    console.log('Database seeded!');
+    for (let i = 0; i < userAmount; i++) {
+      const username = randomUsername();
+      const user = await User.create({ username });
+      users.push(user);
+
+      for (let j = 0; j < thoughtAmount; j++) {
+        const thoughtText = randomThought();
+        const thought = await Thought.create({ thoughtText, username });
+        thoughts.push(thought);
+
+        for (let k = 0; k < 1; k++) {
+          const reactionText = randomReaction();
+          const reaction = new Reaction({ reactionBody: reactionText, username });
+          thought.reactions.push(reaction);
+          await thought.save();
+        }
+      }
+    }
+
+    console.table(users);
+    console.table(thoughts);
+    console.table(reactions);
+    console.log('seeding complete 🌱');
     process.exit(0);
-});
+  
+  });
+
