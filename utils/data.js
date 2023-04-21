@@ -27,16 +27,4 @@ const reactions = [
    'As if!',
 ];
 
-const randomUsernameIndex = Math.floor(Math.random() * usernames.length);
-const randomThoughtIndex = Math.floor(Math.random() * thoughts.length);
-const randomReactionIndex = Math.floor(Math.random() * reactions.length);
-
-const randomUsername = usernames[randomUsernameIndex];
-const randomThought = thoughts[randomThoughtIndex];
-const randomReaction = reactions[randomReactionIndex];
-
-console.log(randomUsername);
-console.log(randomThought);
-console.log(randomReaction);
-// return a user with a thought and reactions - users have friends...
-module.exports = { randomUsername, randomThought, randomReaction };
+module.exports = { usernames, thoughts, reactions };

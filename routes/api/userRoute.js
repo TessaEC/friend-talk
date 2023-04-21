@@ -5,17 +5,22 @@ const {
     getUserById,
     createUser,
     updateUser,
-    deleteUser,
+    removeUser,
     addFriend,
     removeFriend,
 } = require('../../controllers/userControl');
 
-    router.get('/', getAllUsers);
-    router.post('/', createUser);
-    router.get('/:id', getUserById);
-    router.put('/:id', updateUser);
-    router.delete('/:id', deleteUser);
-    router.post('/:userId/friends/:friendId', addFriend);
-    router.delete('/:userId/friends/:friendId', removeFriend);
+    router.route('/')
+    .get(getAllUsers)
+    .post(createUser);
+
+    router.route('/:userId')
+    .get(getUserById)
+    .put(updateUser)
+    .delete(removeUser);
+
+    router.route('/:userId/friends/:friendId')
+    .post(addFriend)
+    .delete(removeFriend);
 
 module.exports = router;
